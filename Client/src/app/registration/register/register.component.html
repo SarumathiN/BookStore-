@@ -1,0 +1,101 @@
+<div class="container">
+  <div class="card o-hidden border-0 shadow-lg my-5">
+    <div class="card-body p-0">
+      <!-- Nested Row within Card Body -->
+      <form autocomplete="off">
+      <div class="row">
+           <div class="p-5">
+            <div class="text-center">
+              <h1 class="h4 text-gray-900 mb-4">Newbiee Please Register!!!!!</h1>
+            </div>
+            <div class="text-center">
+              <h1 class="h4 text-gray-900 mb-4">Personal Details</h1>
+            </div>
+            <div class="form-group row">
+              <div class="from-group col-md-6">
+                <input type="text" class="form-control" id="fname" [(ngModel)]="user.firstName"name="fname" placeholder="First name">
+              </div>
+              <div class="from-group col-md-6">
+                <input type="text" class="form-control" id="lname" name="lname" [(ngModel)]="user.lastName" placeholder="Last name">
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="from-group col-md-6">
+                <input type="email" class="form-control" id="new_email" name="new_email" [(ngModel)]="user.email" placeholder="Email">
+              </div>
+              <div class="from-group col-md-6">
+                <input type="number" class="form-control" id="new_phone" name="new_phone" [(ngModel)]="user.phone" placeholder="Mobile No">
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="from-group col-md-6">
+                <input type="password" class="form-control" id="password" [(ngModel)]="user.password"  name="password" placeholder="Password">
+              </div>
+              <div class="from-group col-md-6">
+                <input type="password" class="form-control" id="repeat_password" name="rePassword" [(ngModel)] ="rePassword" placeholder="Repeat Password">
+              </div>
+            </div> 
+            <hr class="mt-4" /> 
+           <div class="text-center mt-2">
+              <h1 class="h4 text-gray-900 mb-4">Conatct Details</h1>
+            </div>
+            <div class="form-group row">
+              <div class="from-group col-md-6">
+                <input type="text" class="form-control" id="hfno" name="hfno"  [(ngModel)]="user.hfno" placeholder="House/flat No">
+              </div>
+              <div class="from-group col-md-6">
+               <input type="text" class="form-control" id="street" name="street"  [(ngModel)]="user.street" placeholder="Street name">
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="from-group col-md-6">
+                 <input type="text" class="form-control" id="village" name="village"  [(ngModel)]="user.village" placeholder="Village/Thaluk">
+              </div>
+              <div class="from-group col-md-6">
+                <input type="number" class="form-control" id="pin" name="pin" placeholder="PIN" [(ngModel)]="user.pin">
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="from-group col-md-6">
+                 <select class="form-control" [(ngModel)] = "user.state"  name="state" (change)="changeState($event.target.value)">
+                  <option value="null" disabled="true" [selected]="true">--Choose State--</option>
+                  <option *ngFor="let state of States">{{state.name}}</option>
+                </select>
+              </div>
+              <div class="from-group col-md-6">
+                 <select class="form-control" [(ngModel)] = "user.city" name="city">
+                  <option value="null" disabled="true" [selected]="true">--Choose City--</option>
+                  <option *ngFor="let city of cities">{{city}}</option>
+                </select>
+              </div>
+            </div>
+            
+            <a  class="btn btn-primary btn-user btn-block" (click)="signUp()"  data-toggle="modal" data-target="#exampleModal">
+              Register
+            </a>
+          
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Registration Confirmation</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h4>Successfully registered Please Login!!!!</h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Okay</button>
+      </div>
+    </div>
+  </div>
+</div>

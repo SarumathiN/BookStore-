@@ -1,0 +1,136 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-xl-10 col-lg-12 col-md-9">
+      <div class="card o-hidden border-0 shadow-lg my-5">
+      <div class="card-body p-0">
+        <div class="p-5">
+          <div class="text-center">
+            <h1 class="h4 text-gray-900 mb-4">Enter Book Details....</h1>
+          </div>
+        <form>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputEmail4">Name of the book</label>
+                <input type="text" [(ngModel)] = "book.name" class="form-control" name="name" id="name" placeholder="Name of the book">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="textinputEmail4">Author</label>
+                <input type="text" class="form-control" [(ngModel)] = "book.author" id="author" name="author" placeholder="Author">
+              </div>
+            </div>
+            <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="textinputEmail4">Edition</label>
+                <input type="text" class="form-control" id="edition" [(ngModel)] = "book.edition" name="edition" placeholder="Edition">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputEmail4">Publication</label>
+                <input type="text" class="form-control" id="publication" [(ngModel)] = "book.publication" name="publication" placeholder="Publication">
+            </div>
+            </div>
+            <div class="form-group">
+              <label for="inputEmail4">Short Description</label>
+              <input type="text" class="form-control" [(ngModel)] = "book.minidescription" id="minidescription" name="minidescription" placeholder="Short Descrption">
+             </div>
+            <div class="form-group">
+              <label for="inputEmail4">Category</label>
+              <select class="form-control" [(ngModel)] = "book.category"  name="category">
+                <option value="" disabled selected>--Choose Category--</option>
+                <option>Fiction Novels</option>
+                <option>Non-Fiction Novels</option>
+                <option>Biography</option>
+                <option>School Textbooks</option>
+                <option>Govt.Exam Books</option>
+                <option>Entrance Books</option>
+                <option>Computer/Technology Books</option>
+                <option>Short Stories</option>
+                <option>Devotional Books</option>
+             </select>
+            </div>
+            <div class="form-row">
+                 <div class="form-group col-md-4">
+                    <label for="textinputEmail4">ISBN</label>
+                    <input type="number" class="form-control" [(ngModel)] = "book.isbn" id="isbn" name="isbn" placeholder="ISBN">
+                  </div>
+                  <div class="form-group col-md-2">
+                    <label for="textinputEmail4">Avialability</label>
+                    <input type="number" class="form-control" [(ngModel)] = "book.availability" id="availability" name="availability" placeholder="availability">
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="inputPassword4">MRP Price</label>
+                    <input type="number" class="form-control" id="book.price" [(ngModel)] = "book.old_price" name="old_price" placeholder="MRP Price">
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="inputPassword4">Your Price</label>
+                    <input type="number" class="form-control" id="book.price" [(ngModel)] = "book.new_price" name="new_price" placeholder="Your Price">
+                  </div>
+            </div>
+            <div class="form-group">
+             <div class="file-upload-wrapper">
+              <input #fileInput type="file" (change)="onSelectFile($event)" id="input-file-now" class="file-upload" /> <br/>
+              <img class="mt-2" *ngIf="book.image" [src]="book.image" height="200"> 
+            </div>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Brief Descrption</label>
+                <textarea class="form-control" name="description" [(ngModel)] = "book.description" id="description" rows="3"></textarea>
+            </div>
+            <button type="button" class="btn btn-primary" data-toggle="modal" (click) = "view()" data-target="#exampleModal">
+                Post
+            </button>                   
+        </form>
+        </div>
+        </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-row">
+              <div class="form-col-lg-6">
+                <label for="inputEmail4">Name</label>
+                <h4>{{book.name}}</h4>
+                 <br>
+                <label for="inputEmail4">Author</label>
+                <h4>{{book.author}}</h4>
+                <br>
+                <label for="inputEmail4">Edition</label>
+                <h4>{{book.edition}}</h4>
+                <br>
+                <label for="inputEmail4">Publication</label>
+                <h4>{{book.publication}}</h4>
+                <br>
+               </div>
+              <span class="ml-4 mr-4" style="border-left:1px dotted #000;height:500px;align-self: center;"></span>
+           <div class="form-col-lg-6">
+            <label for="inputEmail4">ISBN</label>
+            <h4>{{book.isbn}}</h4>
+            <label for="inputEmail4">MRP Price</label>
+            <h4>{{book.old_price}}</h4>
+            <br/>
+            <label for="inputEmail4">Your Price</label>
+            <h4>{{book.new_price}}</h4>
+            <br>
+            <label for="inputEmail4">image</label><br/>
+            <img class="mt-4" [src]="book.image" height="200"> 
+          </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="addBook()">Confirm Post</button>
+        </div>
+      </div>
+    </div>
+</div>

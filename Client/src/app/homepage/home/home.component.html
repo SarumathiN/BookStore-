@@ -1,0 +1,74 @@
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark " [ngClass]="{'fixed': isScrolled}"  id="nav1">
+  <div class="container">
+    <a class="navbar-brand" style="color:white;" ><i class="fas fa-book" aria-hidden="true"></i> My Book Center</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="btn" style="color: white;" [ngClass]="{'button-fixed': isScrolled}" (click)="moveAbout()"><i class="fas fa-info-circle"></i> About</a>
+        </li>
+        <li class="nav-item">
+          <a  class="btn" style="color: white;" [ngClass]="{'button-fixed': isScrolled}" (click)= "login()" ><i class="fas fa-sign-in-alt"></i> Login</a>
+        </li>
+        <li class="nav-item">
+          <a  class="btn" style="color: white;"[ngClass]= "{'button-fixed': isScrolled}" (click)="moveFeedback()"><i class="fas fa-phone"></i> Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+      <!-- Slide One - Set the background image for this slide in the line below -->
+      <div class="carousel-item active" style="background-image: url('https://images.unsplash.com/photo-1512820790803-83ca734da794?ixlib=rb-1.2.1&auto=format&fit=crop&w=1374&q=80')">
+        <div class="carousel-caption d-none d-md-block">
+          
+        </div>
+      </div>
+      <!-- Slide Two - Set the background image for this slide in the line below -->
+      <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1533561304446-88a43deb6229?ixlib=rb-1.2.1&auto=format&fit=crop&w=1535&q=80')">
+        <div class="carousel-caption d-none d-md-block">
+          <!-- <h3 class="display-4">Second Slide</h3>
+          <p class="lead">This is a description for the second slide.</p> -->
+        </div>
+      </div>
+      <!-- Slide Three - Set the background image for this slide in the line below -->
+      <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1532012197267-da84d127e765?ixlib=rb-1.2.1&auto=format&fit=crop&w=1534&q=80')">
+        <div class="carousel-caption d-none d-md-block">
+         
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+  </div>
+
+
+<!-- Page Content -->
+<section>
+  <div class="container">
+  <div class = "row" id="about">
+    <app-about></app-about>
+  </div> 
+  <div class="row" id="feedback">
+    <app-feedback></app-feedback>
+  </div>
+  </div>
+  
+</section>
+<a class="button" *ngIf="isShow" (click)="gotoTop()"><i class="fa fa-chevron-up"></i></a>

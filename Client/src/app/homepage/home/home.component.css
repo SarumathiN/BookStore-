@@ -1,0 +1,62 @@
+.button {
+  position: fixed;
+  bottom: 5px;
+  right: 5px;
+  font-size: 30px;
+  text-align: center;
+  border-radius: 50px;
+  outline: none;
+  background-color: cornsilk;
+}
+.fixed{
+  background-color:black !important;
+  transition: background-color 800ms linear;
+}
+.carousel-item {
+  height: 65vh;
+  min-height: 350px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover
+}
+i.fa {
+  border : cornsilk;
+  border-radius: 60px;
+  box-shadow: 0px 0px 2px #888;
+  padding: 0.5em 0.6em;
+
+}
+.section{
+  height: 65vh;
+  min-height: 350px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+  .btn {
+    border: none; /* Remove borders */
+    padding: 12px 16px; /* Some padding */
+    font-size: 16px; /* Set a font size */
+    font-weight: bold;
+    cursor: pointer; /* Mouse pointer on hover */
+    margin-left: 10px;
+  }
+  .button-fixed {
+    background-color: DodgerBlue; /* Blue background */
+    border: none; /* Remove borders */
+    color: white; /* White text */
+    padding: 12px 16px; /* Some padding */
+    font-size: 10px; /* Set a font size */
+    cursor: pointer; /* Mouse pointer on hover */
+    margin-left: 10px;
+  }
+  
+  /* Darker background on mouse-over */
+  .button-fixed:hover {
+    background-color: RoyalBlue;
+  }
+  

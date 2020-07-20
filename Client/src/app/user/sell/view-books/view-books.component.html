@@ -1,0 +1,54 @@
+<app-navbar></app-navbar>
+
+
+  <div class="containter">
+    <div class="row justify-content-center">
+        <div class="col-xl-10 col-lg-12 col-md-9">
+          <div class="card o-hidden border-0 shadow-lg my-5">
+          <div class="card-body p-0">
+            <div class="row">
+              <div class="info-main" *ngIf="bookList.length === 0">
+                <h5 class="text-center"><i>No books uploaded for sale</i></h5>
+              </div>
+              </div>
+           <table class="table" *ngIf = "bookList.length">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Image</th>
+                <th scope="col">Author</th>
+                <th scope="col">Publication</th>
+                <th scope="col">Edition</th>
+                <th scope="col">ISBN</th>
+                <th scope="col">MRP Price</th>
+                <th scope="col">My Price</th>
+                <th scope="col">Requested On</th>
+                <th scope="col">Status</th>
+                <th scope="col">Approved on</th>
+                <th scope="col">Approved amount</th>
+                </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let book of bookList; let index = index">
+                <th scope="row">{{book.name}}</th>
+                <td> <img *ngIf="book.image" [src]="book.image" style = "height: 50px;width:50px;"> </td>
+                <td>{{ book.author }}</td>
+                <td>{{ book.publication }}</td>
+                <td>{{ book.edition }}</td>
+                <td>{{ book.isbn }}</td>
+                <td>{{ book.old_price}}</td>
+                <td>{{ book.new_price}}</td>
+                <td>{{ book.createdAt }}</td>
+                <td>{{ book.status }}</td>
+                <td *ngIf="book.status === 'Approved'">{{ book.updatedAt}}</td>               
+                <td *ngIf="book.status === 'Requested'">Not yet approved</td>  
+                <td *ngIf="book.status === 'Approved'">{{ book.commission_price}}</td>               
+                <td *ngIf="book.status === 'Requested'">Not yet approved</td>
+            </tr>
+            </tbody>
+          </table>
+    </div>
+</div>
+</div>
+</div>
+</div>

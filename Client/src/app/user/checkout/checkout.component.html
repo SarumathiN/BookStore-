@@ -1,0 +1,222 @@
+<app-navbar></app-navbar>
+<div class="container">
+<div class="accordion mt-4" id="accordionExample">
+    <div class="card">
+      <div class="card-header" id="headingOne">
+        <h2 class="mb-0">
+          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Order Details
+          </button>
+        </h2>
+      </div>
+  
+      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div class="card-body">
+          <div class="row">
+            <div class="info-main" *ngIf="orderList.length === 0">
+              <h5 class="text-center"><i>No orders Available</i></h5>
+            </div>
+            </div>
+           <table class="table"  *ngIf="orderList.length">
+                <thead>
+                  <tr>
+                    <th scope="col">Sl.No</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">ISBN</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Price/book</th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let order of orderList;let index = index ">
+                  <tr>
+                    <th scope="row">{{index+1}}</th>
+                    <td>{{order.book_name}}</td>
+                    <td>{{order.book_isbn}}</td>
+                    <td>{{order.quantity}}</td>
+                    <td *ngIf = "order.book_old_price > 0">Rs.{{order.commission_price}}</td>
+                    <td *ngIf = "order.book_old_price === 0">Rs.{{order.book_new_price}}</td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Total</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Rs.{{total}}</td>
+                    </tr>
+                </tfoot>
+              </table>
+            </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" id="headingTwo">
+        <h2 class="mb-0">
+          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            Shipping and Contact Details
+          </button>
+        </h2>
+      </div>
+      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+        <div class="card-body">
+            <div class="container">
+              <div class="row justify-content-center">
+                <div class="col-xl-10 col-lg-12 col-md-9">
+                  <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                      <div class="p-5">
+              <div class="row justify-content-center">
+                <div class="col-lg-6">
+                 <h4><label class="text-center">Name</label></h4>
+                </div>
+                <div class="col-lg-6">
+                  <h4><label class="text-center">{{user.firstName}}&nbsp;{{user.lastName}}</label></h4>
+                </div>
+              </div>
+              <div class="row justify-content-center">
+                <div class="col-lg-6">
+                 <h4><label class="text-center">Email</label></h4>
+                </div>
+                <div class="col-lg-6">
+                  <h4><label class="text-center">{{user.email}}</label></h4>
+                </div>
+              </div>
+              <div class="row justify-content-center">
+                <div class="col-lg-6">
+                 <h4><label class="text-center">House/Flat No</label></h4>
+                </div>
+                <div class="col-lg-6">
+                  <h4><label class="text-center">{{user.hfno}}</label></h4>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                 <h4><label class="text-center">Street</label></h4>
+                </div>
+                <div class="col-lg-6">
+                  <h4><label class="text-center">{{user.street}}</label></h4>
+                </div>
+              </div>
+              <div class="row justify-content-center">
+                <div class="col-lg-6">
+                 <h4><label class="text-center">Village</label></h4>
+                </div>
+                <div class="col-lg-6">
+                  <h4><label class="text-center">{{user.village}}</label></h4>
+                </div>
+              </div>
+              <div class="row justify-content-center">
+                <div class="col-lg-6">
+                 <h4><label class="text-center">PIN</label></h4>
+                </div>
+                <div class="col-lg-6">
+                  <h4><label class="text-center">{{user.pin}}</label></h4>
+                </div>
+              </div>
+              <div class="row justify-content-center">
+                <div class="col-lg-6">
+                 <h4><label class="text-center">City</label></h4>
+                </div>
+                <div class="col-lg-6">
+                  <h4><label class="text-center">{{user.city}}</label></h4>
+                </div>
+              </div>
+              <div class="row justify-content-center">
+                <div class="col-lg-6">
+                  <h4><label class="text-center">State</label></h4>
+                </div>
+                <div class="col-lg-6">
+                  <h4><label class="text-center">{{user.state}}</label></h4>
+                </div>
+              </div>
+              <div class="row">
+                <div class="mb-4" style="margin-left: 160px;">
+                  <button type="button" class="btn btn-primary"(click)="changeProfile()">
+                    <i class="fa fa-address-book-o  text-gray-300 mr-1"></i> Change Shipping Address
+                  </button>
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+            </div>
+        </div>
+      </div>
+</div>
+<div class="card">
+      <div class="card-header" id="headingThree">
+        <h2 class="mb-0">
+          <button class="btn btn-link collapsed" (click)="finalAmount()" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            Final Billing details
+          </button>
+        </h2>
+      </div>
+      <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+        <div class="card-body">
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <td>No.of products</td>
+                <td>{{total_quan}}</td>
+              </tr>
+              <tr>
+                <td>Total Amout</td>
+                <td>{{total}}</td>
+              </tr>
+              <tr>
+                <td>Shipping Charge</td>
+                <td>50</td>
+              </tr>
+              <tr>
+                <td>Total Amount</td>
+                <td>{{final}} </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="mb-4 float-right">
+            <button type="button" (click)="finalizeBooks()" class="btn btn-primary" data-toggle="modal" data-target="#confirmOrder">
+              <i class="fas fa-book  text-gray-300 mr-1"></i> Finalize
+            </button>
+          </div>
+        </div>
+      </div>
+</div>
+</div>
+</div>
+
+
+<div class="modal fade" tabindex="-1" role="dialog" id="confirmOrder" aria-labelledby="myLargeModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="p-5">
+              <div class="text-center">
+                <h1 class="h4 text-gray-900 mb-4">
+                    <i class="far fa-smile"></i>
+                    Delivery details will be updated soon.
+                </h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Okay
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

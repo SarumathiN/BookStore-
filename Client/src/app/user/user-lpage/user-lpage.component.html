@@ -1,0 +1,75 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="row" style="margin-top: 20px;">
+
+      <div class="col-xl-3 col-md-4 mb-4"></div>        
+        <div class="col-xl-6 col-md-4 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Categories</label>
+                        <select class="form-control"  (change)="selectChanged($event.target.value)" id="exampleFormControlSelect1">
+                          <option value="" disabled selected>--Choose Category--</option>
+                          <option>Fiction Novels</option>
+                          <option>Non-Fiction Novels</option>
+                          <option>Biography</option>
+                          <option>School Textbooks</option>
+                          <option>Govt.Exam Books</option>
+                          <option>Entrance Books</option>
+                          <option>Computer/Technology Books</option>
+                          <option>Short Stories</option>
+                          <option>Devotional Books</option>
+                          <option>All Books</option>
+                        </select>
+                      </div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fa fa-list-alt fa-2x text-gray-300 mt-4"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-4 mb-4"></div>       
+        </div>
+</div>
+<div class="container">          
+  <div class="row mb-4">
+    <div class="info-main" *ngIf="noBooks">
+      <h5 class="text-center"><i>No Books Available on specified category</i></h5>
+    </div>
+  </div>  
+  <div class="row">
+    <div class="col-md-4" *ngFor = "let book of bookslist">
+      <figure class="card card-product">
+        <div class="img-wrap mx-4 my-4"><img [src]="book.image"> </div>
+        <figcaption class="info-wrap">
+          <h4 *ngIf="book.condition === 'old'">Used book</h4>
+          <blockquote class="blockquote">
+            <p class="mb-0">{{book.name}}</p>
+            <footer class="blockquote-footer">By<cite title="Source Title" class="ml-2">{{book.author}}</cite></footer>
+          </blockquote>
+            <h4>About</h4>
+            <p class="desc">{{book.minidescription}}</p>
+            <h4>Category</h4>
+            <p class="desc">{{book.category}}</p>
+        </figcaption>
+        <div class="bottom-wrap">
+            <a [routerLink] = "['/user/details']" [queryParams]="{id:book.id}"  class="btn btn-sm btn-primary float-right">Order Now</a>	
+            <div class="price-wrap h5" *ngIf="book.condition === 'old'">
+              <span class="price-new">Rs.{{book.commission_price}}</span> 
+              <del class="price-old ml-2">Rs.{{book.old_price}}</del> 
+            </div>
+            <div class="price-wrap h5" *ngIf="book.condition === 'new'">
+              <span class="price-new">Rs.{{book.new_price}}</span> 
+              <!-- <del class="price-old ml-2" *ngIf = "book.condition === 'old'">Rs.{{book.old_price}}</del>  -->
+            </div> <!-- price-wrap.// -->
+        </div> <!-- bottom-wrap.// -->
+      </figure>
+    </div> <!-- col // -->
+  </div>
+</div>
+
+ 

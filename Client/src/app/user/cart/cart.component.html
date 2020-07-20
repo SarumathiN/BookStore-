@@ -1,0 +1,104 @@
+<app-navbar></app-navbar>
+<div class="container mt-2">
+    <div class="card">
+    <table class="table table-hover shopping-cart-wrap">
+    <thead class="text-muted">
+    <tr>
+      <th scope="col">Product</th>
+      <th scope="col" width="120">Quantity</th>
+      <th scope="col" width="120">Price/Book</th>
+      <th scope="col" width="120">Total</th>
+      <th class="text-center" scope="col" width="200">Action</th>
+    </tr>
+    </thead>
+    <tbody *ngFor="let order of orderList ; let index = index">
+    <tr>
+    <td>
+    <figure class="media">
+        <div class="img-wrap"><img [src]="order.book_image" class="img-thumbnail img-sm"></div>
+        <figcaption class="media-body">
+            <h5 class="title text-truncate">{{order.book_name}} </h5>
+            <dl class="param param-inline small">
+              <dt>Author </dt>
+              <dd>{{order.book_author}}</dd>
+            </dl>
+            <dl class="param param-inline small">
+              <dt>ISBN </dt>
+              <dd>{{order.book_isbn}}</dd>
+            </dl>
+        </figcaption>
+    </figure> 
+        </td>
+        <td>
+        <h3>{{order.quantity}}</h3>
+        </td>
+        <td> 
+          <div class="price-wrap" *ngIf = "order.book_old_price > 0"> 
+            <var class="price">Rs.{{order.commission_price}}</var> 
+          </div>
+            <div class="price-wrap" *ngIf="order.book_old_price === 0"> 
+                <var class="price">Rs.{{order.book_new_price}}</var> 
+            </div> <!-- price-wrap .// -->
+        </td>
+        <td> 
+          <div class="price-wrap"> 
+              <var class="price">Rs.{{order.total_amount}}</var> 
+          </div> <!-- price-wrap .// -->
+      </td>
+        <td class="text-center"> 
+          <a class="btn btn-outline-danger" aria-hidden="true" data-toggle="modal" data-target="#deleteModal" (click)="deletedIndex = index"> × Remove</a>
+        </td>
+    </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td><h3>Total</h3></td>   
+        <td><h3>{{total_quan}}</h3></td>
+        <td></td>
+        <td>
+          <div class="price-wrap"> 
+            <var class="price">Rs.{{total}}</var> 
+        </div></td>
+        <td  class="text-center">
+          <a class="btn btn-primary" [routerLink]= "['/user/checkout']">Checkout</a>
+        </td>
+      </tr>
+    </tfoot>
+   </table>
+    </div> <!-- card.// -->
+  
+</div> 
+<div class="modal fade" tabindex="-1" role="dialog" id="deleteModal" aria-labelledby="myLargeModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="p-5">
+              <div class="text-center">
+                <h1 class="h4 text-gray-900 mb-4">
+                  Do you really want to delete?
+                </h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="deleteOrder()">
+          Yes
+        </button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          No
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

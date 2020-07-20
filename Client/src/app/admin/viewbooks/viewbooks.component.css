@@ -1,0 +1,13 @@
+.line-sep {
+    border-left:0.5px dotted beige;
+    height:500px;
+    margin-left : 5rem;
+    margin-right: 2rem;
+    
+}
+.info-main{
+    background-color: turquoise;
+    color:red;
+    width:100%;
+    height:auto;
+    }

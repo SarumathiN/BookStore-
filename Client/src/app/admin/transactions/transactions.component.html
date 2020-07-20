@@ -1,0 +1,65 @@
+<div class="row">
+<div class="info-main" *ngIf="transactions.length === 0">
+  <h5 class="text-center"><i>No pending orders Available</i></h5>
+</div>
+</div>
+<table class="table" *ngIf="transactions.length">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Sl.No</th>
+      <th scope="col">Name of the book</th>
+      <th scope="col">ISBN</th>
+      <th scope="col">Book Price</th>
+      <th scope="col">Sold By</th>
+      <th scope="col">Purchased By</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Total Amount</th>
+      <th scope="col">Ordered At</th>
+      <th scope="col">Complete the delivery</th>
+     </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let purchase of transactions; let index = index">
+      <th scope="row">{{index+1}}</th>
+      <td>{{ purchase.book_name}}</td>
+      <td>{{ purchase.book_isbn}}</td>
+      <td>Rs.{{purchase.book_new_price}}</td>
+      <td>{{ purchase.upload_email}}</td>
+      <td>{{ purchase.order_email}}</td>
+      <td>{{ purchase.quantity}}</td>
+      <td>Rs.{{ purchase.total_amount}}</td>
+      <td>{{ purchase.updatedAt}}</td>
+      <td>
+        <i class ="fa fa-tasks" (click)="deliveryComplete(purchase)"></i>
+      </td>
+     </tr>
+  </tbody>
+</table>
+
+<div class="modal fade" id="deliveredOrder" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delivery Completed</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="card o-hidden border-0 shadow-lg my-5">
+          <div class="card-body p-0">
+            <div class="p-5">
+              <div class="text-center">
+                <h1 class="h4 text-gray-900 mb-4">Delivery completed</h1>
+              </div>
+              </div>
+          </div>
+          </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Okay</button>
+      </div>
+    </div>
+  </div>
+</div>

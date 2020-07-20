@@ -1,0 +1,92 @@
+<app-navbar></app-navbar>
+  <div class="container">
+	  <div class="card mt-4 mb-4">
+	  <div class="row">
+    <aside class="col-sm-5 border-right">
+             <article class="gallery-wrap"> 
+               <div class="img-big-wrap">
+                 <div><img [src]="book.image"></div>
+  
+ <div class="blockquote">
+		<h2 class="title mb-3">{{book.name}}</h2>
+		<dl class="item-property">
+			<dt>Author</dt>
+			<dd><p>{{book.author}} </p></dd>
+		</dl>
+		<dl class="item-property" *ngIf="book.condition === 'new'">
+			<dt>Amount</dt>
+			<dd><p><span class="currency text-warning">Rs.</span><span class="num text-warning">{{book.new_price}}</span>
+			</p></dd>
+		</dl>
+		<dl class="item-property" *ngIf="book.condition === 'old'">
+			<dt>Amount</dt>
+			<dd><p><span class="currency text-warning">Rs.</span><span class="num text-warning">{{book.commission_price}}</span>
+			</p></dd>
+		</dl>
+		<dl class="item-property" *ngIf="book.condition === 'old'">
+			<dt>MRP</dt>
+			<dd><p><span class="currency text-warning">Rs.</span><del class="num text-warning">{{book.old_price}}</del>
+			</p></dd>
+		</dl>
+ </div>
+ </div>
+</article>
+</aside>
+<aside class="col-sm-7">
+<article class="card-body p-5">
+<dl class="item-property">
+  <dt>Description</dt>
+  <dd><p>{{book.description}} </p></dd>
+</dl>
+<dl class="param param-feature">
+	<dt>Availability</dt>
+	<dd *ngIf = "!noBooks">{{book.availability}}</dd>
+	<dd class="text-danger" *ngIf = "noBooks">No stocks avilable</dd>
+  </dl>
+<!-- item-property-hor .// -->
+<dl class="param param-feature">
+  <dt>Condition</dt>
+  <dd>{{book.condition}}</dd>
+</dl>  <!-- item-property-hor .// -->
+<dl class="param param-feature">
+  <dt>Publication</dt>
+  <dd>{{book.publication}}</dd>
+</dl> 
+<dl class="param param-feature">
+	<dt>Edition</dt>
+	<dd>{{book.edition}}</dd>
+</dl> 
+<dl class="param param-feature">
+	<dt>ISBN</dt>
+	<dd>{{book.isbn}}</dd>
+</dl> 
+<dl class="param param-feature">
+	<dt>Category</dt>
+	<dd>{{book.category}}</dd>
+</dl>
+<dl class="param param-feature" *ngIf = "book.availability > 1">
+	<form>
+	<dt>Quantity: </dt>
+	<dd>
+		<select class="form-control form-control-sm" name="quantity" [(ngModel)]="quantity" style="width:70px;">
+			<option value="1" *ngIf = "book.availability > 1"> 1 </option>
+			<option value="2" *ngIf = "book.availability > 2"> 2 </option>
+			<option value="3" *ngIf = "book.availability > 3"> 3 </option>
+			<option value="4" *ngIf = "book.availability > 4"> 4 </option>
+			<option value="5" *ngIf = "book.availability > 5"> 5 </option>
+		</select>
+	</dd>
+	</form>
+  </dl>
+<hr>
+	<div class="row">
+		<div class="col-sm-7">
+			<a (click)="placeOrder()" class="btn btn-lg btn-outline-primary text-uppercase mt-3"> <i class="fas fa-shopping-cart"></i> Add to cart </a>
+		</div> 
+	</div> 
+</article> 
+</aside>
+</div> 
+</div>
+</div>
+

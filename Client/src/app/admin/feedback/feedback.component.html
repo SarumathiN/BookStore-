@@ -1,0 +1,36 @@
+
+<div class="container">
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
+      <div class="col-xl-10 col-lg-12 col-md-9">
+        <div class="card o-hidden border-0 shadow-lg my-5">
+          <div class="card-body p-0">
+            <div class="row">
+              <div class="info-main" *ngIf="feedback.length === 0">
+                <h5 class="text-center"><i>No feedback available</i></h5>
+              </div>
+              </div>
+            <table class="table" *ngIf = "feedback.length">
+                <thead>
+                  <tr>
+                    <th scope="col">Sl No</th>
+                    <th scope="col">Name</th>
+                    <th scope="col" width = "200">Email</th>
+                    <th scope="col" width = "200">Message</th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let feed of feedback;let index = index">
+                  <tr>
+                    <td>{{index+1}}</td>
+                    <td>{{feed.name}}</td>
+                    <td>{{feed.email}}</td>
+                    <td>{{feed.message}}</td>
+                  </tr>
+                </tbody>
+              </table>
+        
+        </div>
+              </div>
+              </div>
+              </div>
+              </div>

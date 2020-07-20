@@ -1,0 +1,201 @@
+<app-navbar></app-navbar>
+<div class="container mt-3">
+    <div class="card">
+        <div class="card-header">
+          <ul class="nav nav-tabs card-header-tabs" id="bologna-list" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" href="#profile" role="tab" data-toggle = "tab" aria-controls="description" aria-selected="true">Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link"  href="#address" role="tab" data-toggle = "tab" aria-controls="history" aria-selected="false">Address</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#Edit" role="tab" data-toggle = "tab" aria-controls="deals" aria-selected="false">Edit</a>
+            </li>
+          </ul>
+        </div>
+        <div class="card-body">         
+           <div class="tab-content mt-3">
+            <div class="tab-pane active" id="profile" role="tabpanel">
+              <div class="row">
+                <div class="col-lg-6">
+                 <h4><label class="text-center">Name</label></h4>
+                </div>
+                <div class="col-lg-6">
+                  <h4><label class="text-center">{{user.firstName}}&nbsp;{{user.lastName}}</label></h4>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                 <h4><label class="text-center">Email</label></h4>
+                </div>
+                <div class="col-lg-6">
+                  <h4><label class="text-center">{{user.email}}</label></h4>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                 <h4><label class="text-center">Phone</label></h4>
+                </div>
+                <div class="col-lg-6">
+                  <h4><label class="text-center">{{user.phone}}</label></h4>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                 <h4><label class="text-center">Password</label></h4>
+                </div>
+                <div class="col-lg-6">
+                  <h4><label class="text-center">{{user.password}}</label></h4>
+                </div>
+              </div>
+            </div>
+             <div class="tab-pane" id="address" role="tabpanel" aria-labelledby="history-tab"> 
+              <div class="row">
+                <div class="col-lg-6">
+                 <h4><label class="text-center">House/Flat No</label></h4>
+                </div>
+                <div class="col-lg-6">
+                  <h4><label class="text-center">{{user.hfno}}</label></h4>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                 <h4><label class="text-center">Street</label></h4>
+                </div>
+                <div class="col-lg-6">
+                  <h4><label class="text-center">{{user.street}}</label></h4>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                 <h4><label class="text-center">Village</label></h4>
+                </div>
+                <div class="col-lg-6">
+                  <h4><label class="text-center">{{user.village}}</label></h4>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                 <h4><label class="text-center">PIN</label></h4>
+                </div>
+                <div class="col-lg-6">
+                  <h4><label class="text-center">{{user.pin}}</label></h4>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                 <h4><label class="text-center">City</label></h4>
+                </div>
+                <div class="col-lg-6">
+                  <h4><label class="text-center">{{user.city}}</label></h4>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <h4><label class="text-center">State</label></h4>
+                </div>
+                <div class="col-lg-6">
+                  <h4><label class="text-center">{{user.state}}</label></h4>
+                </div>
+              </div>
+            </div>
+             
+            <div class="tab-pane" id="Edit" role="tabpanel" aria-labelledby="deals-tab">
+              <form>
+                <div class="row">
+                  <div class="info-main" *ngIf="!noUpdate">
+                      <h5 class="text-center"><i>Edit and update,then login again to continue.....</i></h5>
+                    </div>
+                    <div class="info-main" *ngIf="noUpdate">
+                      <h5 class="text-center"><i>Please edit and update</i></h5>
+                    </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-6">
+                     <div class="p-3">
+                      <div class="text-center">
+                        <h1 class="h4 text-gray-900 mb-4">Personal Details</h1>
+                      </div>
+                      <div class="form-group row">
+                        <div class="from-group col-md-6">
+                          <input type="text" class="form-control" id="fname" [(ngModel)]="user.firstName"name="fname" placeholder="First name">
+                        </div>
+                        <div class="from-group col-md-6">
+                          <input type="text" class="form-control" id="lname" name="lname" [(ngModel)]="user.lastName" placeholder="Last name">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="from-group col-md-6">
+                          <input type="email" class="form-control" id="email" name="email" [(ngModel)]="user.email" placeholder="Email">
+                        </div>
+                        <div class="from-group col-md-6">
+                          <input type="number" class="form-control" id="phone" name="phone" [(ngModel)]="user.phone" placeholder="Mobile No">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="from-group col-md-6">
+                          <input type="text" class="form-control" id="password" [(ngModel)]="user.password"  name="password" placeholder="Password">
+                        </div>
+                      </div> 
+                    </div>
+                  </div>
+                    <div class="col-lg-6">
+                      <div class="p-3">
+                     <div class="text-center">
+                        <h1 class="h4 text-gray-900 mb-4">Conatct Details</h1>
+                      </div>
+                      <div class="form-group row">
+                        <div class="from-group col-md-6">
+                          <input type="text" class="form-control" id="hfno" name="hfno"  [(ngModel)]="user.hfno" placeholder="House/flat No">
+                        </div>
+                        <div class="from-group col-md-6">
+                         <input type="text" class="form-control" id="street" name="street"  [(ngModel)]="user.street" placeholder="Street name">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="from-group col-md-6">
+                           <input type="text" class="form-control" id="village" name="village"  [(ngModel)]="user.village" placeholder="Village/Thaluk">
+                        </div>
+                        <div class="from-group col-md-6">
+                          <input type="number" class="form-control" id="pin" name="pin" placeholder="PIN" [(ngModel)]="user.pin">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="from-group col-md-6" *ngIf = "!isEditing"> 
+                          <input type="text" class="form-control" id="state" name="state" (click)="isEditing = true" [(ngModel)]="user.state" placeholder="Village/Thaluk">
+                       </div>
+                        <div class="from-group col-md-6" *ngIf ="isEditing">
+                           <select class="form-control" [(ngModel)] = "user.state"  name="state" (change)="changeState($event.target.value)">
+                            <option value="null" disabled="true" [selected]="true">--Choose State--</option>
+                            <option *ngFor="let state of States">{{state.name}}</option>
+                          </select>
+                        </div>
+                        <div class="from-group col-md-6" *ngIf = "!isEditing"> 
+                          <input type="text" class="form-control" id="city" name="city" (click)="isEditing = true"  [(ngModel)]="user.city" placeholder="Village/Thaluk">
+                       </div>
+                        <div class="from-group col-md-6" *ngIf ="isEditing">
+                           <select class="form-control" [(ngModel)] = "user.city" name="city">
+                            <option value="null" disabled="true" [selected]="true">--Choose City--</option>
+                            <option *ngFor="let city of cities">{{city}}</option>
+                          </select>
+                        </div>
+                      </div>
+                      </div>
+                      </div>
+                    </div>
+                     <div class="row">
+                       <div class="col-lg-4"></div>
+                       <div class="col-lg-4"> <a  class="btn btn-primary btn-user btn-block" (click)="updateUser()" data-toggle="modal" data-target="#exampleModal">
+                        Update
+                      </a></div>
+                      <div class="col-lg-4"></div>                  
+                    </div>
+                 </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+ 
